@@ -1,0 +1,114 @@
+#hırsız icin sınır 40 agırlık hangilerini alırsa daha karlı olur
+
+class Item(object):
+    def __init__(self,n,v,w,v_w):
+        self.name=n
+        self.value=v
+        self.weight=w
+        self.v_w=v_w
+
+item_1=Item('clock',175,10,17.5)
+
+item_2=Item('paintig',90,9,10)
+
+item_3=Item('radio',20,4,5)
+
+item_4=Item('vase',50,2,25)
+
+item_5=Item('book',10,1,10)
+
+item_6=Item('computer',200,20,10)
+
+items=[item_1,item_2,item_3,item_4,item_5,item_6]
+
+for i in range(len(items)-1):
+    for j in range(i+1,len(items)):
+        if (items[i].v_w > items[j].v_w):
+            temp = items[i]
+            items[i] = items[j]
+            items[j] = temp
+
+for i in range(len(items)):
+    print(items[i].name)
+
+toplam=0
+alınacak=[]
+
+for i in range(len(items)-1,0,-1):
+    toplam += items[i].weight
+    if(toplam<40):
+        alınacak.append(items[i])
+
+print("\n alınacaklar: \n")
+
+for i in range(len(alınacak)):
+    print(alınacak[i].name)
+
+print("\n\n")
+
+
+def get_list_for_burglar(items,maxWeight):  #diger bir yontem
+    result=[]
+    totalValue,totalWeight=0,0
+    for i in range(len(items)):
+        if(totalWeight+items[i].weight<=maxWeight):
+            result.append(items[i])
+            totalWeight+=items[i].weight
+            totalValue+=items[i].value
+    return (result,totalValue)
+
+def print_result(items_2):
+    for item_1 in items_2[0]:
+        print(item_1.name)
+    print(items_2[1])
+
+items_2=get_list_for_burglar(items,20)
+print(print_result(items_2))
+
+
+#----------------------------------------------------------------
+
+import random
+
+class myNode(object):
+    def __init__(self, v=0):
+        self.val = v
+        self.left = None
+        self.right = None
+
+class myTree(object):
+    def __init__(self):
+        self.root = myNode(250)
+
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val, end=" ")
+        inorder(root.right)
+
+def insert(root,node):
+    if root is None:
+        root = node
+    else:
+        if root.val < node.val:
+            if root.right is None:
+                root.right = node
+            else:
+                insert(root.right, node)
+        else:
+            if root.left is None:
+                root.left = node
+            else:
+                insert(root.left, node)
+
+def test():
+    numbers = []
+    for x in range(5):
+        numbers.append(random.randint(1, 101))
+    print(numbers)
+    Tree_1 = myTree()
+    for n in numbers:
+        insert(Tree_1.root, myNode(n))
+    inorder(Tree_1.root)
+
+test()
