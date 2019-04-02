@@ -30,7 +30,7 @@
 
 #soru 6: lab uygulamalarında kelime frekanslarının oldugu fonksiyonu hash yapısını listeye aktaran fonksiyon
 
-#b)tersini yani iki boyutlu listeyi hash yapısına altaran fonk
+#b)tersini yani iki boyutlu listeyi hash yapısına aktaran fonk
 
 #soru 7:verilen bir formule göre sayının kokunu bulma
 
