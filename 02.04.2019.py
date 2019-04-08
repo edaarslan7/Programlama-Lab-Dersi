@@ -43,14 +43,3 @@ def myFunctionPrintHash(myHashList):
 
 #myList=(myFunctionCreate(3,2))
 #myFunctionPrintHash(myFunctionConvertToHash(myList))
-
-def myFunctionHashToList(myHashList):
-    myList=[]
-    for key in range(len(myHashList)+1):
-        myList.append(key)
-    
-    return myList
-
-myHashList={(0,0):-1,(0,1):1,(1,0):1,(1,1):-1}
-#myFunctionPrint(myFunctionHashToList(myFunctionConvertToHash(myList)))
-myFunctionHashToList(myHashList)
