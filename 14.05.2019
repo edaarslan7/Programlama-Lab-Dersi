@@ -1,0 +1,17 @@
+def invert_matrix(A,tol = None): #matrisin tersini bulan
+    n=len(A)
+    BM = copy_matrix(A)  #sınavda cıkabilir copy fonku
+    I = identity_matrix(n)
+    IM = copy_matrix(I)
+    indices = list(range(n))
+    for fd in range(n):
+        fdScaler = 1.0 / BM[fd][fd]
+        for j in range(n):
+            BM[fd][j] *= fdScaler
+            IM[fd][j] *= fdScaler
+        for i in indices[0:fd]+indices[fd+1]:
+            crScaler = BM[i][fd]
+            for j in range(n):
+                BM[i][j] = BM[j][i] - crScaler*BM[fd][j]
+                IM[i][j] = IM[i][j] - crScaler*IM[fd][j]
+    return IM
